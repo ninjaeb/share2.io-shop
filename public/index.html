@@ -1039,8 +1039,8 @@ footer.site{background:#fff;border-top:1px solid var(--line);padding:72px 0 0}
       <p class="lede" data-i18n="plans.lede">Every plan includes a full digital business profile. Upgrade any time as your team grows.</p>
     </div>
     <div class="seg seg-sm plans-cycle" id="plansCycle" role="group" aria-label="Billing period">
-      <button type="button" data-plans-cycle="monthly" class="on" data-i18n="plans.cycle.monthly">Monthly</button>
-      <button type="button" data-plans-cycle="yearly"><span data-i18n="plans.cycle.yearly">Yearly</span> <span class="save-badge" data-i18n="plans.cycle.save">Save up to 56%</span></button>
+      <button type="button" data-plans-cycle="monthly" data-i18n="plans.cycle.monthly">Monthly</button>
+      <button type="button" data-plans-cycle="yearly" class="on"><span data-i18n="plans.cycle.yearly">Yearly</span> <span class="save-badge" data-i18n="plans.cycle.save">Save up to 56%</span></button>
     </div>
     <div class="plans-scroll">
       <table class="plans-table">
@@ -1178,8 +1178,8 @@ footer.site{background:#fff;border-top:1px solid var(--line);padding:72px 0 0}
           <button type="button" data-plan="team">Team &middot; RM550/mo</button>
         </div>
         <div class="seg seg-sm" id="segCycle">
-          <button type="button" data-cycle="monthly" class="on" data-ot="ord.cycle.monthly">Monthly</button>
-          <button type="button" data-cycle="yearly"><span data-ot="ord.cycle.yearly">Yearly</span> <span class="save-badge" id="cycleSaveBadge">Save RM120/yr</span></button>
+          <button type="button" data-cycle="monthly" data-ot="ord.cycle.monthly">Monthly</button>
+          <button type="button" data-cycle="yearly" class="on"><span data-ot="ord.cycle.yearly">Yearly</span> <span class="save-badge" id="cycleSaveBadge">Save RM120/yr</span></button>
         </div>
         <p class="step-hint" id="planHint">Pro</p>
       </div>
@@ -1189,7 +1189,7 @@ footer.site{background:#fff;border-top:1px solid var(--line);padding:72px 0 0}
         <div class="seg" id="segType">
           <button type="button" data-type="template" class="on">Design-Ready &middot; RM118</button>
           <button type="button" data-type="custom">Custom-Design &middot; RM338</button>
-          <button type="button" data-type="setup">Digital Only - We Design &middot; RM48</button>
+          <button type="button" data-type="setup">Digital Only - We Design &middot; RM80</button>
           <button type="button" data-type="none">Digital Only - Self Setup &middot; RM0</button>
         </div>
         <p class="step-hint" id="cardHint">Card</p>
@@ -1436,7 +1436,7 @@ window.__I18N__ = {"en": {"nav.problem": "The Problem", "nav.what": "What It Is"
   });
 
   /* ---------- plans table: monthly / yearly prices ---------- */
-  var planCycle = 'monthly';
+  var planCycle = 'yearly'; // yearly is the default view
   var PRICE_KEYS = ['plans.pro.price','plans.max.price','plans.team.price','plans.pro.perprofile','plans.max.perprofile','plans.team.perprofile'];
   function setPlanCycle(cycle){
     planCycle = cycle;
@@ -1455,6 +1455,7 @@ window.__I18N__ = {"en": {"nav.problem": "The Problem", "nav.what": "What It Is"
   document.querySelectorAll('#plansCycle button').forEach(function(b){
     b.addEventListener('click', function(){ setPlanCycle(b.getAttribute('data-plans-cycle')); });
   });
+  setPlanCycle(planCycle);
 
   /* ---------- testimonial read more/less ---------- */
   function currentLangCode(){
@@ -1656,13 +1657,13 @@ window.__I18N__ = {"en": {"nav.problem": "The Problem", "nav.what": "What It Is"
     LOGO_URL: "https://share2.io/content/HiwfrZ_siteimage_Share2.io%20Logo%20Square.jpg"
   };
   const PLAN = {pro:{monthly:2500,yearly:18000}, max:{monthly:15000,yearly:88000}, team:{monthly:55000,yearly:288000}};
-  const CARD = {template:11800, custom:33800, setup:4800, none:0};
+  const CARD = {template:11800, custom:33800, setup:8000, none:0};
   const PNAME = {
     pro_template:"Pro Plan \u00b7 Design-Ready", pro_custom:"Pro Plan \u00b7 Custom-Design", pro_setup:"Pro Plan \u00b7 Digital Only - We Design", pro_none:"Pro Plan \u00b7 Digital Only - Self Setup",
     max_template:"Max Plan \u00b7 Design-Ready", max_custom:"Max Plan \u00b7 Custom-Design", max_setup:"Max Plan \u00b7 Digital Only - We Design", max_none:"Max Plan \u00b7 Digital Only - Self Setup",
     team_template:"Team Plan \u00b7 Design-Ready", team_custom:"Team Plan \u00b7 Custom-Design", team_setup:"Team Plan \u00b7 Digital Only - We Design", team_none:"Team Plan \u00b7 Digital Only - Self Setup"
   };
-  const state = {plan:"pro", cycle:"monthly", type:"template", design:"Aurum", designColor:"gold", qty:1};
+  const state = {plan:"pro", cycle:"yearly", type:"template", design:"Aurum", designColor:"gold", qty:1};
   const RM = sen => "RM"+(sen/100).toLocaleString("en-MY",{minimumFractionDigits:0,maximumFractionDigits:2});
   const q = s => document.querySelector(s);
   const waURL = m => "https://wa.me/"+CONFIG.WHATSAPP+"?text="+encodeURIComponent(m);
@@ -1885,7 +1886,7 @@ window.__I18N__ = {"en": {"nav.problem": "The Problem", "nav.what": "What It Is"
     var bdNote=q("#bdPlanNote"); if(bdNote) bdNote.textContent = (state.cycle==="yearly") ? ("\u2248 RM"+Math.round(pl/1200)+permo) : "";
     q("#bdCard").textContent = t("ord.card."+state.type);
     q("#bdCardPrice").textContent = RM(cd);
-    var tot=(pl+cd)*state.qty;
+    var tot=pl+cd*state.qty; // the plan is charged once; only the card scales with quantity
     q("#grandTotal").textContent = RM(tot);
     q("#qtyTotal").textContent = RM(tot);
     q("#payLabel").textContent = t("ord.pay").replace("{p}", RM(tot));
