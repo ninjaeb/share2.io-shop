@@ -1,0 +1,71 @@
+name: Merge and deploy
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review, unlabeled]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --omit=dev --no-audit --no-fund
+      - run: node .github/scripts/check.js
+
+  merge:
+    # Own-repo pull requests only. Draft or "hold"-labelled ones are left open.
+    needs: checks
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      !github.event.pull_request.draft &&
+      !contains(github.event.pull_request.labels.*.name, 'hold')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - run: gh pr merge "$PR" --repo "$GITHUB_REPOSITORY" --squash --match-head-commit "$SHA"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+
+  deploy:
+    # Runs after an automatic merge, a manual merge, or "Run workflow" on main.
+    # Off until the repository variable DEPLOY_ENABLED is set to "true".
+    needs: [checks, merge]
+    if: >-
+      !cancelled() && vars.DEPLOY_ENABLED == 'true' &&
+      needs.checks.result == 'success' &&
+      (needs.merge.result == 'success' ||
+       (github.event_name != 'pull_request' && github.ref == 'refs/heads/main'))
+    runs-on: ubuntu-latest
+    concurrency:
+      group: shop-deploy
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+      - run: bash .github/scripts/deploy.sh
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      - name: Check the live shop
+        run: |
+          sleep 15
+          curl -fsS --retry 5 --retry-delay 10 --retry-all-errors https://share2.io/shop/health | tee health.json
+          grep -q '"payments_configured":true' health.json
