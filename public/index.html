@@ -1399,14 +1399,32 @@ window.__I18N__ = {"en": {"nav.problem": "The Problem", "nav.what": "What It Is"
     });
     try{ localStorage.setItem('share2_lang', lang); }catch(e){}
   }
+  // Reflect the language in the URL (?lang=zh) so it can be shared / bookmarked.
+  function setLangInUrl(lang){
+    try{
+      var u = new URL(window.location.href);
+      u.searchParams.set('lang', lang);
+      history.replaceState(null, '', u.pathname + u.search + u.hash);
+    }catch(e){}
+  }
   var startLang = 'en';
   try{
     var saved = localStorage.getItem('share2_lang');
     if(saved && T[saved]) startLang = saved;
   }catch(e){}
+  try{
+    // A ?lang= in the URL wins over the saved preference.
+    var fromUrl = new URLSearchParams(window.location.search).get('lang');
+    if(fromUrl && T[fromUrl]) startLang = fromUrl;
+  }catch(e){}
   applyLang(startLang);
+  setLangInUrl(startLang);
   document.querySelectorAll('.langsw button, .mm-lang button').forEach(function(b){
-    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
+    b.addEventListener('click', function(){
+      var lang = b.getAttribute('data-lang');
+      applyLang(lang);
+      setLangInUrl(lang);
+    });
   });
 
   /* ---------- testimonial read more/less ---------- */
