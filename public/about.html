@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>About Us · Share2.io</title>
+<meta name="theme-color" content="#FFFFFF"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#FCFDFF;
+  --panel:#F6F8FB;
+  --line-soft:#EFF2F6;
+  --ink:#2B2E4A;
+  --body:#5B6178;
+  --muted:#8A90A6;
+  --line:#E6EBF1;
+  --teal:#15B789;
+  --teal-deep:#0E9B74;
+  --blue:#1296B7;
+  --blue-deep:#0F7E9A;
+  --grad:linear-gradient(120deg,#15B789 0%,#1296B7 100%);
+  --grad-soft:linear-gradient(120deg,rgba(21,183,137,.10),rgba(18,150,183,.10));
+  --nav-bg:rgba(255,255,255,.86);
+  --shadow-sm:0 2px 10px -4px rgba(43,46,74,.10);
+  --radius-sm:12px;
+  --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --w:1320px;
+}
+*{margin:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:1.08rem;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--teal-deep);text-decoration:none}
+a:hover{color:var(--blue-deep)}
+
+
+/* ---------- main-site nav (parity with index.html) ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:16.5px;letter-spacing:.01em;border-radius:var(--radius-sm);padding:15px 28px;cursor:pointer;border:none;transition:transform .22s ease,box-shadow .22s ease,filter .22s ease;-webkit-tap-highlight-color:transparent;text-decoration:none}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 12px 26px -10px rgba(18,150,183,.55)}
+.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:0 18px 34px -12px rgba(18,150,183,.6);color:#fff}
+nav.mainnav{position:sticky;top:0;z-index:60;background:transparent;padding:18px 26px 0}
+.nav-in{max-width:var(--w);margin:0 auto;padding:0 28px;height:70px;display:flex;align-items:center;gap:36px;
+  background:var(--nav-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm)}
+.logo{display:flex;align-items:center;flex:none}
+.logo img{height:30px;width:auto}
+.nav-links{display:flex;align-items:center;gap:32px;margin-left:8px}
+.nav-links a{font-size:15px;font-weight:600;color:var(--body);transition:color .2s ease;white-space:nowrap;letter-spacing:.01em;text-decoration:none}
+.nav-links a:hover{color:var(--ink)}
+.langsw{display:flex;align-items:center;gap:6px;margin-left:auto;color:var(--muted);font-size:13.5px;font-weight:700}
+.langsw-icon{width:16px;height:16px;flex:none;color:var(--muted)}
+.langsw button{font-size:13.5px;font-weight:700;color:var(--muted);background:transparent;border:none;padding:4px 6px;cursor:pointer;transition:color .2s ease}
+.langsw button.active{color:var(--ink)}
+.nav-cta{padding:11px 20px;font-size:14.5px;flex:none}
+.hamburger{display:none;flex:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;align-items:center;justify-content:center;flex-direction:column;gap:5px;cursor:pointer;box-shadow:var(--shadow-sm)}
+.hamburger span{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s ease,opacity .25s ease}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 26px;position:relative;z-index:1}
+
+/* ---------- footer (parity with index.html) ---------- */
+footer.site{background:#fff;border-top:1px solid var(--line);padding:72px 0 0}
+.foot{display:grid;grid-template-columns:1fr 1.8fr;gap:64px;align-items:start}
+.foot .logo img{height:34px}
+.foot .tag{margin-top:18px;font-size:16px;line-height:1.7;color:var(--body);max-width:380px}
+.foot-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.foot-cols h4{font-size:14px;font-weight:800;letter-spacing:.02em;color:var(--ink);margin-bottom:18px}
+.foot-cols a{display:block;font-size:15.5px;color:var(--body);padding:5px 0;font-weight:500;transition:color .2s ease}
+.foot-cols a:hover{color:var(--teal-deep)}
+.legal{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  border-top:1px solid var(--line);margin-top:56px;padding-top:24px;padding-bottom:28px;
+  font-size:14px;color:var(--muted);font-weight:500}
+.legal .brand-credit b{color:var(--teal-deep);font-weight:700}
+@media (max-width:860px){
+  .foot{grid-template-columns:1fr;gap:36px}
+  .foot-cols{grid-template-columns:1fr 1fr;gap:22px}
+}
+@media (max-width:640px){
+  .wrap{padding:0 20px}
+  .legal{flex-direction:column;align-items:flex-start;gap:6px}
+}
+
+/* ---------- legal/info content ---------- */
+main{max-width:var(--w);margin:0 auto;padding:56px 26px 80px}
+main h1{font-size:clamp(30px,4.5vw,40px);font-weight:800;color:var(--ink);letter-spacing:-.02em;margin:0 0 8px;line-height:1.16}
+main .updated{font-size:14px;color:var(--muted);font-weight:600;margin:0 0 28px}
+main h2{font-size:20px;font-weight:800;color:var(--ink);margin:36px 0 12px;letter-spacing:-.01em}
+main p{margin:0 0 16px;line-height:1.75;color:var(--body)}
+main ul{margin:0 0 16px;padding-left:22px}
+main li{margin-bottom:8px;line-height:1.7;color:var(--body)}
+main a{color:var(--teal-deep);font-weight:600}
+main a:hover{color:var(--blue-deep)}
+main .box{margin-top:28px;padding:20px 22px;border-radius:var(--radius-md,14px);background:var(--panel,#F6F8FB);border:1px solid var(--line)}
+main .box h3{font-size:15px;font-weight:800;color:var(--ink);margin:0 0 8px}
+@media (max-width:640px){
+  main{padding:40px 20px 60px}
+}
+.mobile-menu{position:fixed;top:0;right:0;height:100%;width:min(80vw,330px);z-index:70;background:#fff;border-left:1px solid var(--line);padding:92px 28px 32px;display:flex;flex-direction:column;gap:4px;transform:translateX(100%);transition:transform .32s cubic-bezier(.2,.7,.2,1);box-shadow:-24px 0 60px -24px rgba(43,46,74,.28)}
+.mobile-menu.open{transform:translateX(0)}
+.mm-link{font-size:16.5px;font-weight:700;color:var(--ink);padding:13px 4px;border-bottom:1px solid var(--line-soft);text-decoration:none;display:block}
+.mm-link:hover{color:var(--teal-deep)}
+.mm-cta{margin-top:22px;width:100%}
+.mm-lang{display:flex;gap:8px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line-soft)}
+.mm-lang button{flex:1;font-size:13.5px;font-weight:800;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:11px 0;cursor:pointer}
+.mm-lang button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.mobile-menu-backdrop{position:fixed;inset:0;z-index:65;background:rgba(43,46,74,.4);opacity:0;pointer-events:none;transition:opacity .3s ease}
+.mobile-menu-backdrop.open{opacity:1;pointer-events:auto}
+@media (max-width:1180px){
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .hamburger{display:flex}
+  .langsw{margin-left:auto}
+  nav.mainnav{padding:14px 20px 0}
+  .nav-in{padding:0 20px;gap:14px;height:64px}
+}
+@media (min-width:1181px){
+  .mobile-menu,.mobile-menu-backdrop{display:none}
+}
+@media (max-width:640px){
+  nav.mainnav{padding:12px 14px 0}
+  .nav-in{padding:0 16px;height:60px;gap:10px}
+  .logo img{height:26px}
+  .langsw{gap:4px}
+  .langsw-icon{width:14px;height:14px}
+  .langsw button{padding:4px 5px;font-size:12px}
+}
+</style>
+</head>
+<body>
+<nav class="mainnav">
+  <div class="nav-in">
+    <a class="logo" href="index.html" aria-label="Share2.io home"><img src="https://share2.io/content/Share2IO-Main-Logo-new.png" alt="Share2.io"></a>
+    <div class="nav-links">
+      <a href="index.html#problem">The Problem</a>
+      <a href="index.html#what">What It Is</a>
+      <a href="index.html#how">How It Works</a>
+      <a href="index.html#cards">The Cards</a>
+      <a href="index.html#showcase">The Profiles</a>
+      <a href="index.html#plans">Pricing</a>
+    </div>
+    <div class="langsw" role="group" aria-label="Language switcher">
+      <svg class="langsw-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <button type="button" data-lang="en" class="active">EN</button>
+      <button type="button" data-lang="zh">中文</button>
+      <button type="button" data-lang="ms">BM</button>
+    </div>
+    <a class="btn btn-primary nav-cta" href="index.html#order">Order Your Card</a>
+    <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a class="mm-link" href="index.html#problem">The Problem</a>
+  <a class="mm-link" href="index.html#what">What It Is</a>
+  <a class="mm-link" href="index.html#how">How It Works</a>
+  <a class="mm-link" href="index.html#cards">The Cards</a>
+  <a class="mm-link" href="index.html#showcase">The Profiles</a>
+  <a class="mm-link" href="index.html#plans">Pricing</a>
+  <a class="btn btn-primary mm-cta" href="index.html#order">Order Your Card</a>
+  <div class="mm-lang" role="group" aria-label="Language switcher">
+    <button type="button" data-lang="en" class="active">EN</button>
+    <button type="button" data-lang="zh">中文</button>
+    <button type="button" data-lang="ms">BM</button>
+  </div>
+</div>
+<div class="mobile-menu-backdrop" id="mobileMenuBackdrop"></div>
+
+<main>
+<h1>About Us</h1>
+<p class="updated">Share2.io, a product of Gotka Technologies</p>
+<p class="lead">Share2.io turns the moment you meet someone into a lasting connection. We combine a living digital profile, QR name cards and premium NFC business cards into one identity you control — so the people you meet always reach the current you.</p>
+<h2>What we do</h2>
+<ul>
+<li><b>Digital business profile</b> — a single, always-up-to-date page for your links, contact details, socials, portfolio and booking.</li>
+<li><b>NFC name cards</b> — premium physical cards, ready-made or custom-branded, that open your profile with one tap.</li>
+<li><b>QR codes &amp; sharing tools</b> — unique, trackable QR codes and short links for every occasion.</li>
+<li><b>Insight &amp; teams</b> — see how your profile performs, and manage roles and cards across a team.</li>
+</ul>
+<h2>Why we built it</h2>
+<p>Paper cards are frozen the moment they’re printed, easy to lose and impossible to measure. Share2.io replaces that with one connected identity that updates everywhere the instant you change it — no reprints, no dead links, no lost contacts.</p>
+<h2>Who we are</h2>
+<p>Share2.io is built and operated by Gotka Technologies, based in Malaysia, serving professionals, entrepreneurs and teams across Malaysia and the wider region.</p>
+<div class="box">
+<h3>Get in touch</h3>
+<p style="margin:0">Email: <a href="mailto:hello@share2.io">hello@share2.io</a><br/>WhatsApp: +60 11-6331 6630</p>
+</div>
+</main>
+<footer class="site">
+  <div class="wrap foot">
+    <div>
+      <a class="logo" href="index.html#top" aria-label="Share2.io home"><img src="https://share2.io/content/Share2IO-Main-Logo-new.png" alt="Share2.io"></a>
+      <p class="tag">Connect smarter, grow faster. Digital profiles, QR name cards and NFC business cards — one platform, one living identity.</p>
+    </div>
+    <div class="foot-cols">
+      <div>
+        <h4>Solutions</h4>
+        <a href="https://share2.io/bio-profiles">Digital Business Card</a>
+        <a href="https://share2.io/qr-codes">QR Codes</a>
+        <a href="https://share2.io/link-shortener">Link Shortener</a>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <a href="https://share2.io/help">Help Center</a>
+        <a href="https://share2.io/affiliate">Affiliate Program</a>
+        <a href="https://share2.io/contact">Contact Us</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="about.html">About Us</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="refund.html">Refund Policy</a>
+        <a href="aup.html">Acceptable Use</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap legal">
+    <span class="brand-credit">© <span id="yr">2026</span> Share2.io. All Rights Reserved. Product by <b>Gotka Technologies</b>.</span>
+    <span>Connections that matter.</span>
+  </div>
+</footer>
+<script>document.getElementById('yr') && (document.getElementById('yr').textContent = new Date().getFullYear());</script>
+<script>
+(function(){
+  // Language pills here only set the preference for when the visitor
+  // navigates back to the main site — legal page content itself isn't
+  // translated, so there's nothing on THIS page to switch.
+  var saved = 'en';
+  try{ var s = localStorage.getItem('share2_lang'); if(s) saved = s; }catch(e){}
+  document.querySelectorAll('.langsw button, .mm-lang button').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-lang') === saved);
+    b.addEventListener('click', function(){
+      var lang = b.getAttribute('data-lang');
+      try{ localStorage.setItem('share2_lang', lang); }catch(e){}
+      document.querySelectorAll('.langsw button, .mm-lang button').forEach(function(x){
+        x.classList.toggle('active', x.getAttribute('data-lang') === lang);
+      });
+    });
+  });
+
+  var hamburger = document.getElementById('hamburgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var mmBackdrop = document.getElementById('mobileMenuBackdrop');
+  function openMenu(){
+    hamburger.classList.add('open'); hamburger.setAttribute('aria-expanded','true');
+    mobileMenu.classList.add('open'); mobileMenu.setAttribute('aria-hidden','false');
+    mmBackdrop.classList.add('open'); document.body.style.overflow = 'hidden';
+  }
+  function closeMenu(){
+    hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded','false');
+    mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true');
+    mmBackdrop.classList.remove('open'); document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', function(){
+    if(mobileMenu.classList.contains('open')) closeMenu(); else openMenu();
+  });
+  mmBackdrop.addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeMenu(); });
+  window.addEventListener('resize', function(){ if(window.innerWidth > 1180) closeMenu(); });
+})();
+</script>
+</body>
+</html>

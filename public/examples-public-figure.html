@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Sample Profile 2 — Public Figure / Brand Page — Share2.io</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+  :root{
+    --teal:#15B789;--teal-deep:#0FA37A;--blue:#1296B7;--ink:#2B2E4A;
+    --body:#525670;--muted:#8A8FA6;--panel:#F6F8FB;--line:#E7EAF2;
+    --radius-lg:20px;--radius-md:14px;
+    --shadow-sm:0 6px 18px -10px rgba(43,46,74,.14);
+    --shadow-md:0 18px 44px -16px rgba(43,46,74,.20);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Manrope',sans-serif;
+    background:radial-gradient(900px 500px at 15% -10%, rgba(21,183,137,.10), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, rgba(18,150,183,.10), transparent 55%),var(--panel);
+    color:var(--body);min-height:100vh;display:flex;align-items:flex-start;justify-content:center;
+    padding:48px 20px 80px;-webkit-font-smoothing:antialiased;
+  }
+  .stage{width:100%;max-width:1000px}
+  .stage-label{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:10px;
+    color:var(--muted);font-size:13.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .stage-label .dot{width:7px;height:7px;border-radius:50%;background:var(--teal)}
+  .stage-sub{text-align:center;color:var(--muted);font-size:13px;margin:0 0 34px}
+  .stage-sub a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+  .layout{display:grid;grid-template-columns:380px 1fr;gap:56px;align-items:start}
+
+  .phone{background:#0E1224;border-radius:44px;padding:14px;box-shadow:var(--shadow-md);position:relative}
+  .phone::before{content:"";position:absolute;top:14px;left:50%;transform:translateX(-50%);
+    width:120px;height:26px;background:#0E1224;border-radius:0 0 18px 18px;z-index:3}
+  .screen{background:#fff;border-radius:32px;overflow:hidden;position:relative;height:800px;display:flex;flex-direction:column}
+  .screen-scroll{flex:1;overflow-y:auto;padding-bottom:36px;scrollbar-width:none}
+  .screen-scroll::-webkit-scrollbar{display:none}
+
+  .cover{height:96px;background:linear-gradient(120deg,var(--ink) 0%,#4a3d66 100%)}
+  .id-block{padding:0 26px;margin-top:-40px;text-align:center}
+  .avatar{width:84px;height:84px;border-radius:50%;margin:0 auto;border:4px solid #fff;box-shadow:var(--shadow-sm);
+    background:linear-gradient(135deg,#c9317a,#e05c8a);display:flex;align-items:center;justify-content:center;
+    color:#fff;font-weight:800;font-size:26px}
+  .id-name{margin:14px 0 4px;font-size:19px;font-weight:800;color:var(--ink)}
+  .id-title{margin:0;font-size:13px;color:var(--body);font-weight:600;line-height:1.5;padding:0 12px}
+
+  .social-row{display:flex;justify-content:center;gap:10px;margin:18px 26px 0}
+  .social-row a{width:38px;height:38px;border-radius:50%;background:var(--panel);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:var(--ink)}
+  .social-row a svg{width:17px;height:17px}
+
+  .section-title{padding:22px 26px 4px;font-size:14px;font-weight:800;color:var(--ink);margin:0;
+    border-top:1px solid var(--line);margin-top:14px}
+
+  .campaign-card{margin:12px 26px 0;padding:16px;border-radius:var(--radius-md);
+    background:linear-gradient(120deg,var(--teal),var(--blue));color:#fff}
+  .campaign-card p.ct1{margin:0 0 4px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+  .campaign-card p.ct2{margin:0 0 10px;font-size:14px;font-weight:800;line-height:1.4}
+  .campaign-card .cbtn{display:inline-block;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,.18);
+    font-size:12px;font-weight:800;color:#fff}
+
+  .brand-grid{padding:0 26px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+  .brand-tile{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 6px;
+    border-radius:var(--radius-md);background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+  .brand-tile .ic{width:32px;height:32px;border-radius:9px;background:var(--panel);display:flex;
+    align-items:center;justify-content:center;color:var(--blue)}
+  .brand-tile .ic svg{width:16px;height:16px}
+  .brand-tile span{font-size:10.5px;font-weight:700;color:var(--ink);text-align:center;line-height:1.3}
+
+  .album-card{margin:12px 26px 0;padding:14px;border-radius:var(--radius-md);background:var(--panel);
+    border:1px solid var(--line);display:flex;align-items:center;gap:12px}
+  .album-card .art{width:46px;height:46px;border-radius:9px;flex:none;
+    background:linear-gradient(135deg,var(--ink),#4a3d66);display:flex;align-items:center;justify-content:center;color:#fff}
+  .album-card .art svg{width:20px;height:20px}
+  .album-card .at1{margin:0 0 2px;font-size:12.5px;font-weight:800;color:var(--ink)}
+  .album-card .at2{margin:0;font-size:11px;color:var(--muted);font-weight:600}
+
+  .qr-card{margin:20px 26px 0;padding:16px;border-radius:var(--radius-md);
+    background:linear-gradient(120deg,var(--ink),#3d4166);display:flex;align-items:center;gap:14px;color:#fff}
+  .qr-box{width:50px;height:50px;background:#fff;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center}
+  .qr-box svg{width:36px;height:36px}
+  .qr-card .qt1{font-size:12.5px;font-weight:800;margin:0 0 2px}
+  .qr-card .qt2{font-size:11px;color:#c7cae0;margin:0;font-weight:600}
+
+  .share-bar{padding:20px 26px 4px;display:flex;align-items:center;justify-content:space-between;
+    border-top:1px solid var(--line);margin-top:22px}
+  .share-bar .lbl{font-size:11px;color:var(--muted);font-weight:700}
+  .share-bar .dots{display:flex;gap:8px}
+  .share-bar .dots span{width:26px;height:26px;border-radius:50%;background:var(--panel);border:1px solid var(--line)}
+
+  .explain h1{font-size:27px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin:0 0 10px;line-height:1.2}
+  .explain h1 span{color:var(--teal-deep)}
+  .explain>p.lede{font-size:15px;line-height:1.7;color:var(--body);margin:0 0 26px;max-width:480px}
+  .src-box{margin-bottom:22px;padding:16px 18px;border-radius:var(--radius-md);background:#fff;
+    border:1px solid var(--line);font-size:12.5px;color:var(--muted);line-height:1.6}
+  .src-box b{color:var(--ink)}
+  .src-box a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+  .feat{display:flex;gap:14px;margin-bottom:20px}
+  .feat .num{flex:none;width:30px;height:30px;border-radius:9px;background:var(--panel);border:1px solid var(--line);
+    color:var(--teal-deep);font-weight:800;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+  .feat h3{margin:0 0 4px;font-size:14.5px;font-weight:800;color:var(--ink)}
+  .feat p{margin:0;font-size:13px;line-height:1.6;color:var(--body)}
+
+  @media (max-width:860px){.layout{grid-template-columns:1fr;justify-items:center}.explain{max-width:380px}}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="stage-label"><span class="dot"></span> Example 2 of 3 — Public Figure / Brand Page</div>
+  <p class="stage-sub">Modeled on the real, published profile at <a href="https://share2.io/ctdk" target="_blank" rel="noopener">share2.io/ctdk</a></p>
+
+  <div class="layout">
+    <div class="phone">
+      <div class="screen">
+        <div class="screen-scroll">
+          <div class="cover"></div>
+          <div class="id-block">
+            <div class="avatar">MV</div>
+            <p class="id-name">Maya Verona</p>
+            <p class="id-title">Singer, songwriter &amp; entrepreneur — passionate about music and design</p>
+          </div>
+
+          <div class="social-row">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          </div>
+
+          <p class="section-title">Charity Drive</p>
+          <div class="campaign-card">
+            <p class="ct1">Community Fund</p>
+            <p class="ct2">Flood Relief Fund — Northern Region</p>
+            <span class="cbtn">Donate now →</span>
+          </div>
+
+          <p class="section-title">Brands</p>
+          <div class="brand-grid">
+            <div class="brand-tile">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg></span>
+              <span>Verona Label</span>
+            </div>
+            <div class="brand-tile">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.7-4.35-9.3-8.2C.6 9.7 1.9 6 5.4 5c2-.6 3.8.2 4.9 1.7C11.4 5.2 13.2 4.4 15.2 5c3.5 1 4.8 4.7 2.7 7.8C15.3 16.65 12 21 12 21z"/></svg></span>
+              <span>Aria Beauty</span>
+            </div>
+            <div class="brand-tile">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 7V5a4 4 0 0 0-8 0v2"/></svg></span>
+              <span>Verona Shop</span>
+            </div>
+          </div>
+
+          <p class="section-title">Latest Release</p>
+          <div class="album-card">
+            <span class="art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <div>
+              <p class="at1">Golden Hour — Single</p>
+              <p class="at2">Listen on Spotify, Apple Music</p>
+            </div>
+          </div>
+          <div class="album-card">
+            <span class="art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <div>
+              <p class="at1">Homecoming — Album</p>
+              <p class="at2">Listen on Spotify, Apple Music</p>
+            </div>
+          </div>
+
+          <div class="qr-card">
+            <div class="qr-box">
+              <svg viewBox="0 0 24 24" fill="#2B2E4A"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="14" width="3" height="3"/><rect x="14" y="18" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
+            </div>
+            <div>
+              <p class="qt1">Scan to follow everything</p>
+              <p class="qt2">share2.io/maya-verona</p>
+            </div>
+          </div>
+
+          <div class="share-bar">
+            <span class="lbl">SHARE PROFILE</span>
+            <div class="dots"><span></span><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="explain">
+      <h1>The <span>public figure</span><br>&amp; brand page.</h1>
+      <p class="lede">Built for someone with an audience — an artist, a creator, a public personality with multiple ventures. One page holds everything: social presence, causes, brands, and releases.</p>
+
+      <div class="src-box">
+        <b>Fictional example.</b> "Maya Verona" and all brand/release names are placeholders — not a real customer. Layout and section order are modeled directly on the real, published profile at <a href="https://share2.io/ctdk" target="_blank" rel="noopener">share2.io/ctdk</a>.
+      </div>
+
+      <div class="feat">
+        <div class="num">1</div>
+        <div><h3>Cover + identity</h3><p>A cover band adds presence beyond a plain avatar — signals "this is a public page."</p></div>
+      </div>
+      <div class="feat">
+        <div class="num">2</div>
+        <div><h3>Social row up top</h3><p>All the platforms someone might already follow you on, in one tap-friendly row.</p></div>
+      </div>
+      <div class="feat">
+        <div class="num">3</div>
+        <div><h3>Cause or campaign</h3><p>A highlighted card for whatever matters right now — a fundraiser, a launch, an event.</p></div>
+      </div>
+      <div class="feat">
+        <div class="num">4</div>
+        <div><h3>Brand tiles</h3><p>Every venture gets its own tile — a label, a product line, a shop — instead of getting buried in one link list.</p></div>
+      </div>
+      <div class="feat">
+        <div class="num">5</div>
+        <div><h3>Latest releases</h3><p>Music, videos, or drops — kept current without redoing the whole page.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

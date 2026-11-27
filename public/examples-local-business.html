@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Sample Profile 3 — Local Business — Share2.io</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+  :root{
+    --teal:#15B789;--teal-deep:#0FA37A;--blue:#1296B7;--ink:#2B2E4A;
+    --body:#525670;--muted:#8A8FA6;--panel:#F6F8FB;--line:#E7EAF2;
+    --radius-lg:20px;--radius-md:14px;
+    --shadow-sm:0 6px 18px -10px rgba(43,46,74,.14);
+    --shadow-md:0 18px 44px -16px rgba(43,46,74,.20);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Manrope',sans-serif;
+    background:radial-gradient(900px 500px at 15% -10%, rgba(21,183,137,.10), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, rgba(18,150,183,.10), transparent 55%),var(--panel);
+    color:var(--body);min-height:100vh;display:flex;align-items:flex-start;justify-content:center;
+    padding:48px 20px 80px;-webkit-font-smoothing:antialiased;
+  }
+  .stage{width:100%;max-width:1000px}
+  .stage-label{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:10px;
+    color:var(--muted);font-size:13.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .stage-label .dot{width:7px;height:7px;border-radius:50%;background:var(--teal)}
+  .stage-sub{text-align:center;color:var(--muted);font-size:13px;margin:0 0 34px}
+  .stage-sub a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+  .layout{display:grid;grid-template-columns:380px 1fr;gap:56px;align-items:start}
+
+  .phone{background:#0E1224;border-radius:44px;padding:14px;box-shadow:var(--shadow-md);position:relative}
+  .phone::before{content:"";position:absolute;top:14px;left:50%;transform:translateX(-50%);
+    width:120px;height:26px;background:#0E1224;border-radius:0 0 18px 18px;z-index:3}
+  .screen{background:#fff;border-radius:32px;overflow:hidden;position:relative;height:800px;display:flex;flex-direction:column}
+  .screen-scroll{flex:1;overflow-y:auto;padding-bottom:36px;scrollbar-width:none}
+  .screen-scroll::-webkit-scrollbar{display:none}
+
+  .cover{height:96px;background:linear-gradient(120deg,#D97706 0%,#EA580C 100%)}
+  .id-block{padding:0 26px;margin-top:-38px;text-align:center}
+  .avatar{width:80px;height:80px;border-radius:18px;margin:0 auto;border:4px solid #fff;box-shadow:var(--shadow-sm);
+    background:linear-gradient(135deg,#D97706,#EA580C);display:flex;align-items:center;justify-content:center;
+    color:#fff;font-weight:800;font-size:24px}
+  .id-name{margin:14px 0 2px;font-size:19px;font-weight:800;color:var(--ink)}
+  .id-title{margin:0;font-size:12.5px;color:var(--muted);font-weight:600}
+
+  .promo-card{margin:18px 26px 0;padding:16px;border-radius:var(--radius-md);
+    background:linear-gradient(120deg,var(--teal),var(--teal-deep));color:#fff}
+  .promo-card p.pt1{margin:0 0 4px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+  .promo-card p.pt2{margin:0;font-size:15px;font-weight:800;line-height:1.4}
+
+  .steps{margin:12px 26px 0;padding:14px 16px;border-radius:var(--radius-md);background:var(--panel);
+    border:1px solid var(--line)}
+  .steps .step{display:flex;gap:10px;padding:8px 0}
+  .steps .step:not(:last-child){border-bottom:1px dashed var(--line)}
+  .steps .step .n{flex:none;width:22px;height:22px;border-radius:50%;background:var(--teal);color:#fff;
+    font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .steps .step p{margin:0;font-size:12px;color:var(--body);line-height:1.55;font-weight:500}
+  .steps .step b{color:var(--ink)}
+
+  .section-title{padding:22px 26px 4px;font-size:14px;font-weight:800;color:var(--ink);margin:0;
+    border-top:1px solid var(--line);margin-top:14px}
+
+  .action-list{padding:8px 26px 0;display:flex;flex-direction:column;gap:9px}
+  .action-item{display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:var(--radius-md);
+    background:var(--panel);border:1px solid var(--line);font-weight:700;font-size:13.5px;color:var(--ink)}
+  .action-item .ic{width:32px;height:32px;border-radius:9px;flex:none;display:flex;align-items:center;
+    justify-content:center;background:#fff;border:1px solid var(--line);color:#D97706}
+  .action-item .ic svg{width:16px;height:16px}
+
+  .map-card{margin:12px 26px 0;border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+  .map-visual{height:110px;background:
+    linear-gradient(var(--panel) 1px, transparent 1px) 0 0/22px 22px,
+    linear-gradient(90deg, var(--panel) 1px, transparent 1px) 0 0/22px 22px,#eef1f6;
+    position:relative;display:flex;align-items:center;justify-content:center}
+  .map-visual .pin{width:34px;height:34px;border-radius:50% 50% 50% 0;background:#D97706;
+    transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm)}
+  .map-visual .pin svg{width:16px;height:16px;color:#fff;transform:rotate(45deg)}
+  .map-links{display:flex}
+  .map-links a{flex:1;text-align:center;padding:11px;font-size:12px;font-weight:800;color:var(--ink);
+    background:#fff;border-top:1px solid var(--line)}
+  .map-links a:first-child{border-right:1px solid var(--line)}
+
+  .qr-card{margin:20px 26px 0;padding:16px;border-radius:var(--radius-md);
+    background:linear-gradient(120deg,var(--ink),#3d4166);display:flex;align-items:center;gap:14px;color:#fff}
+  .qr-box{width:50px;height:50px;background:#fff;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center}
+  .qr-box svg{width:36px;height:36px}
+  .qr-card .qt1{font-size:12.5px;font-weight:800;margin:0 0 2px}
+  .qr-card .qt2{font-size:11px;color:#c7cae0;margin:0;font-weight:600}
+
+  .share-bar{padding:20px 26px 4px;display:flex;align-items:center;justify-content:space-between;
+    border-top:1px solid var(--line);margin-top:22px}
+  .share-bar .lbl{font-size:11px;color:var(--muted);font-weight:700}
+  .share-bar .dots{display:flex;gap:8px}
+  .share-bar .dots span{width:26px;height:26px;border-radius:50%;background:var(--panel);border:1px solid var(--line)}
+
+  .explain h1{font-size:27px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin:0 0 10px;line-height:1.2}
+  .explain h1 span{color:var(--teal-deep)}
+  .explain>p.lede{font-size:15px;line-height:1.7;color:var(--body);margin:0 0 26px;max-width:480px}
+  .src-box{margin-bottom:22px;padding:16px 18px;border-radius:var(--radius-md);background:#fff;
+    border:1px solid var(--line);font-size:12.5px;color:var(--muted);line-height:1.6}
+  .src-box b{color:var(--ink)}
+  .src-box a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+  .feat{display:flex;gap:14px;margin-bottom:20px}
+  .feat .num{flex:none;width:30px;height:30px;border-radius:9px;background:var(--panel);border:1px solid var(--line);
+    color:var(--teal-deep);font-weight:800;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+  .feat h3{margin:0 0 4px;font-size:14.5px;font-weight:800;color:var(--ink)}
+  .feat p{margin:0;font-size:13px;line-height:1.6;color:var(--body)}
+
+  @media (max-width:860px){.layout{grid-template-columns:1fr;justify-items:center}.explain{max-width:380px}}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="stage-label"><span class="dot"></span> Example 3 of 3 — Local Business</div>
+  <p class="stage-sub">Modeled on the real, published profile at <a href="https://share2.io/momo-yakitori-trx-grab" target="_blank" rel="noopener">share2.io/momo-yakitori-trx-grab</a></p>
+
+  <div class="layout">
+    <div class="phone">
+      <div class="screen">
+        <div class="screen-scroll">
+          <div class="cover"></div>
+          <div class="id-block">
+            <div class="avatar">🍜</div>
+            <p class="id-name">Hana Ramen Bar</p>
+            <p class="id-title">Pavilion Bukit Bintang</p>
+          </div>
+
+          <div class="promo-card">
+            <p class="pt1">Limited offer</p>
+            <p class="pt2">FREE Gyoza (5pcs) worth RM12.90</p>
+          </div>
+
+          <div class="steps">
+            <div class="step"><span class="n">1</span><p><b>Leave a 5-star review</b> on our Google listing</p></div>
+            <div class="step"><span class="n">2</span><p><b>Screenshot the review</b> and send it to us on WhatsApp</p></div>
+            <div class="step"><span class="n">3</span><p><b>Show it at the counter</b> to redeem your free Gyoza</p></div>
+          </div>
+
+          <p class="section-title">Contact Hana Ramen Bar</p>
+          <div class="action-list">
+            <div class="action-item">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+              Call Us
+            </div>
+            <div class="action-item">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+              WhatsApp Us
+            </div>
+          </div>
+
+          <p class="section-title">Find Us</p>
+          <div class="map-card">
+            <div class="map-visual">
+              <div class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7 6 13 6 13s6-6 6-13z"/><circle cx="12" cy="8" r="2"/></svg></div>
+            </div>
+            <div class="map-links">
+              <a href="#">Waze</a>
+              <a href="#">Google Maps</a>
+            </div>
+          </div>
+
+          <div class="qr-card">
+            <div class="qr-box">
+              <svg viewBox="0 0 24 24" fill="#2B2E4A"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="14" width="3" height="3"/><rect x="14" y="18" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
+            </div>
+            <div>
+              <p class="qt1">Scan for directions &amp; offers</p>
+              <p class="qt2">share2.io/hana-ramen-pavilion</p>
+            </div>
+          </div>
+
+          <div class="share-bar">
+            <span class="lbl">SHARE PROFILE</span>
+            <div class="dots"><span></span><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="explain">
+      <h1>The <span>local business</span><br>page.</h1>
+      <p class="lede">Built for a restaurant, café, or shop that wants foot traffic and reviews — not just contact info. The QR code goes on the counter, the table, or the receipt.</p>
+
+      <div class="src-box">
+        <b>Fictional example.</b> "Hana Ramen Bar" is a placeholder — not a real customer. Layout and section order are modeled directly on the real, published profile at <a href="https://share2.io/momo-yakitori-trx-grab" target="_blank" rel="noopener">share2.io/momo-yakitori-trx-grab</a>.
+      </div>
+
+      <div class="feat">
+        <div class="num">1</div>
+        <div><h3>Promo up top</h3><p>The reason someone scanned the code in the first place — a free item, a discount — is the first thing they see.</p></div>
+      </div>
+      <div class="feat">
+        <div class="num">2</div>
+        <div><h3>Numbered redemption steps</h3><p>Here the numbering earns its place — it's a real sequence someone has to follow to get the offer.</p></div>
+      </div>
+      <div class="feat">
+        <div class="num">3</div>
+        <div><h3>Call &amp; WhatsApp</h3><p>Direct lines for reservations or questions, no extra clicks.</p></div>
+      </div>
+      <div class="feat">
+        <div class="num">4</div>
+        <div><h3>Waze &amp; Google Maps</h3><p>Both major map apps side-by-side — whichever the visitor already has open.</p></div>
+      </div>
+      <div class="feat">
+        <div class="num">5</div>
+        <div><h3>QR on everything physical</h3><p>Counter tent card, door sticker, receipt — one code drives reviews, directions, and offers at once.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

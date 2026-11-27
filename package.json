@@ -1,0 +1,20 @@
+{
+  "name": "share2-nfc-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Payment backend for the Share2.io NFC card storefront (Razorpay Curlec).",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "express-mysql-session": "^3.0.3",
+    "express-session": "^1.18.0",
+    "mysql2": "^3.11.0",
+    "razorpay": "^2.9.4"
+  }
+}

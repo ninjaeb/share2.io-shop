@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Sample Profile 1 — Professional Business Card — Share2.io</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+  :root{
+    --teal:#15B789;--teal-deep:#0FA37A;--blue:#1296B7;--ink:#2B2E4A;
+    --body:#525670;--muted:#8A8FA6;--panel:#F6F8FB;--line:#E7EAF2;
+    --radius-lg:20px;--radius-md:14px;
+    --shadow-sm:0 6px 18px -10px rgba(43,46,74,.14);
+    --shadow-md:0 18px 44px -16px rgba(43,46,74,.20);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Manrope',sans-serif;
+    background:radial-gradient(900px 500px at 15% -10%, rgba(21,183,137,.10), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, rgba(18,150,183,.10), transparent 55%),var(--panel);
+    color:var(--body);min-height:100vh;display:flex;align-items:flex-start;justify-content:center;
+    padding:48px 20px 80px;-webkit-font-smoothing:antialiased;
+  }
+  .stage{width:100%;max-width:1000px}
+  .stage-label{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:10px;
+    color:var(--muted);font-size:13.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .stage-label .dot{width:7px;height:7px;border-radius:50%;background:var(--teal)}
+  .stage-sub{text-align:center;color:var(--muted);font-size:13px;margin:0 0 34px}
+  .stage-sub a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+  .layout{display:grid;grid-template-columns:380px 1fr;gap:56px;align-items:start}
+
+  .phone{background:#0E1224;border-radius:44px;padding:14px;box-shadow:var(--shadow-md);position:relative}
+  .phone::before{content:"";position:absolute;top:14px;left:50%;transform:translateX(-50%);
+    width:120px;height:26px;background:#0E1224;border-radius:0 0 18px 18px;z-index:3}
+  .screen{background:#fff;border-radius:32px;overflow:hidden;position:relative;height:800px;display:flex;flex-direction:column}
+  .screen-scroll{flex:1;overflow-y:auto;padding-bottom:36px;scrollbar-width:none}
+  .screen-scroll::-webkit-scrollbar{display:none}
+
+  .id-block{padding:34px 26px 0;text-align:center}
+  .avatar{
+    width:88px;height:88px;border-radius:50%;margin:0 auto;box-shadow:var(--shadow-sm);
+    background:linear-gradient(135deg,var(--ink),#3d4166);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:28px;
+  }
+  .id-name{margin:16px 0 2px;font-size:20px;font-weight:800;color:var(--ink)}
+  .id-title{margin:0;font-size:14px;color:var(--body);font-weight:600}
+
+  .divider{margin:22px 26px 0;padding-top:18px;border-top:1px solid var(--line)}
+  .section-title{padding:0 26px;font-size:15px;font-weight:800;color:var(--ink);margin:0 0 4px}
+  .section-sub{padding:0 26px;font-size:12.5px;color:var(--muted);margin:0 0 14px;line-height:1.6}
+
+  .action-list{padding:0 26px;display:flex;flex-direction:column;gap:9px}
+  .action-item{display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:var(--radius-md);
+    background:var(--panel);border:1px solid var(--line);font-weight:700;font-size:13.5px;color:var(--ink)}
+  .action-item .ic{width:32px;height:32px;border-radius:9px;flex:none;display:flex;align-items:center;
+    justify-content:center;background:#fff;border:1px solid var(--line);color:var(--teal-deep)}
+  .action-item .ic svg{width:16px;height:16px}
+
+  .cta-primary{display:flex;align-items:center;justify-content:center;gap:8px;margin:16px 26px 0;
+    padding:14px;border-radius:var(--radius-md);background:linear-gradient(120deg,var(--teal),var(--teal-deep));
+    color:#fff;font-weight:800;font-size:14px;border:none;cursor:pointer;
+    box-shadow:0 12px 26px -12px rgba(21,183,137,.55)}
+
+  .company-card{margin:22px 26px 0;padding:16px;border-radius:var(--radius-md);background:#fff;
+    border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+  .company-card .co-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .company-card .co-logo{width:38px;height:38px;border-radius:9px;background:var(--panel);
+    border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--blue);flex:none}
+  .company-card .co-logo svg{width:20px;height:20px}
+  .company-card .co-name{font-size:13.5px;font-weight:800;color:var(--ink);margin:0}
+  .company-card p.co-desc{font-size:12px;color:var(--body);line-height:1.6;margin:0;font-weight:500}
+
+  .service-item{display:flex;gap:10px;padding:12px 26px;border-bottom:1px solid var(--line)}
+  .service-item .ic{width:30px;height:30px;border-radius:8px;background:var(--panel);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:var(--teal-deep);flex:none}
+  .service-item .ic svg{width:15px;height:15px}
+  .service-item h4{margin:0 0 3px;font-size:12.5px;font-weight:800;color:var(--ink)}
+  .service-item p{margin:0;font-size:11.5px;color:var(--muted);line-height:1.5}
+
+  .qr-card{margin:20px 26px 0;padding:16px;border-radius:var(--radius-md);
+    background:linear-gradient(120deg,var(--ink),#3d4166);display:flex;align-items:center;gap:14px;color:#fff}
+  .qr-box{width:50px;height:50px;background:#fff;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center}
+  .qr-box svg{width:36px;height:36px}
+  .qr-card .qt1{font-size:12.5px;font-weight:800;margin:0 0 2px}
+  .qr-card .qt2{font-size:11px;color:#c7cae0;margin:0;font-weight:600}
+
+  .share-bar{padding:20px 26px 4px;display:flex;align-items:center;justify-content:space-between;
+    border-top:1px solid var(--line);margin-top:22px}
+  .share-bar .lbl{font-size:11px;color:var(--muted);font-weight:700}
+  .share-bar .dots{display:flex;gap:8px}
+  .share-bar .dots span{width:26px;height:26px;border-radius:50%;background:var(--panel);border:1px solid var(--line)}
+
+  .explain h1{font-size:27px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin:0 0 10px;line-height:1.2}
+  .explain h1 span{color:var(--teal-deep)}
+  .explain>p.lede{font-size:15px;line-height:1.7;color:var(--body);margin:0 0 26px;max-width:480px}
+  .src-box{margin-bottom:22px;padding:16px 18px;border-radius:var(--radius-md);background:#fff;
+    border:1px solid var(--line);font-size:12.5px;color:var(--muted);line-height:1.6}
+  .src-box b{color:var(--ink)}
+  .src-box a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+  .feat{display:flex;gap:14px;margin-bottom:20px}
+  .feat .num{flex:none;width:30px;height:30px;border-radius:9px;background:var(--panel);border:1px solid var(--line);
+    color:var(--teal-deep);font-weight:800;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+  .feat h3{margin:0 0 4px;font-size:14.5px;font-weight:800;color:var(--ink)}
+  .feat p{margin:0;font-size:13px;line-height:1.6;color:var(--body)}
+
+  @media (max-width:860px){.layout{grid-template-columns:1fr;justify-items:center}.explain{max-width:380px}}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="stage-label"><span class="dot"></span> Example 1 of 3 — Professional Business Card</div>
+  <p class="stage-sub">Modeled on the real, published profile at <a href="https://share2.io/gotech" target="_blank" rel="noopener">share2.io/gotech</a></p>
+
+  <div class="layout">
+    <div class="phone">
+      <div class="screen">
+        <div class="screen-scroll">
+          <div class="id-block">
+            <div class="avatar">RK</div>
+            <p class="id-name">Ravi Kumar</p>
+            <p class="id-title">Sales Director</p>
+          </div>
+
+          <div class="divider">
+            <p class="section-title">Contact Details</p>
+            <p class="section-sub">If you have any questions, feel free to contact me so we can help your business.</p>
+          </div>
+
+          <div class="action-list">
+            <div class="action-item">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+              WhatsApp Message
+            </div>
+          </div>
+
+          <button type="button" class="cta-primary">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Exchange Contact
+          </button>
+
+          <div class="action-list" style="margin-top:9px">
+            <div class="action-item">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+              Call Me
+            </div>
+            <div class="action-item">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+              WhatsApp Call
+            </div>
+          </div>
+
+          <div class="divider">
+            <p class="section-title">Company &amp; Services</p>
+          </div>
+
+          <div class="company-card">
+            <div class="co-head">
+              <span class="co-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 21V9a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v12"/></svg></span>
+              <p class="co-name">Northbridge Studio</p>
+            </div>
+            <p class="co-desc">Northbridge Studio is a comprehensive digital solutions provider dedicated to helping businesses establish and grow their online presence.</p>
+          </div>
+
+          <div style="margin-top:14px">
+            <div class="service-item">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+              <div>
+                <h4>Product &amp; App Development</h4>
+                <p>Custom solutions that streamline workflows and boost operational efficiency for growing teams.</p>
+              </div>
+            </div>
+            <div class="service-item">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></span>
+              <div>
+                <h4>Cloud &amp; Web Hosting</h4>
+                <p>Low-latency, secure infrastructure with 99.9% uptime for growing businesses.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="qr-card">
+            <div class="qr-box">
+              <svg viewBox="0 0 24 24" fill="#2B2E4A"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="14" width="3" height="3"/><rect x="14" y="18" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
+            </div>
+            <div>
+              <p class="qt1">Scan to save this profile</p>
+              <p class="qt2">share2.io/ravi-kumar</p>
+            </div>
+          </div>
+
+          <div class="share-bar">
+            <span class="lbl">SHARE PROFILE</span>
+            <div class="dots"><span></span><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="explain">
+      <h1>The <span>professional</span><br>business card.</h1>
+      <p class="lede">Built for someone meeting clients and partners face-to-face — a director, a founder, a consultant. The whole page is built around getting a real contact exchange, fast.</p>
+
+      <div class="src-box">
+        <b>Fictional example.</b> "Ravi Kumar" and "Northbridge Studio" are placeholders — not a real customer. Layout and section order are modeled directly on the real, published profile at <a href="https://share2.io/gotech" target="_blank" rel="noopener">share2.io/gotech</a>.
+      </div>
+
+      <div class="feat">
+        <div class="num">1</div>
+        <div><h3>Identity first</h3><p>Photo, name, and role — no scrolling required to know who you're looking at.</p></div>
+      </div>
+      <div class="feat">
+        <div class="num">2</div>
+        <div><h3>WhatsApp before anything else</h3><p>The fastest way to start a conversation sits right under the identity block.</p></div>
+      </div>
+      <div class="feat">
+        <div class="num">3</div>
+        <div><h3>Exchange Contact</h3><p>A two-way form — the visitor leaves their details too, so the connection isn't one-sided.</p></div>
+      </div>
+      <div class="feat">
+        <div class="num">4</div>
+        <div><h3>Company &amp; services</h3><p>What the business actually does, laid out as scannable service cards, not paragraphs.</p></div>
+      </div>
+      <div class="feat">
+        <div class="num">5</div>
+        <div><h3>QR + share bar</h3><p>The same profile, always reachable — one code, never reprinted.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
