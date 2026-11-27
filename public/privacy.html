@@ -256,11 +256,20 @@ main .box h3{font-size:15px;font-weight:800;color:var(--ink);margin:0 0 8px}
   // translated, so there's nothing on THIS page to switch.
   var saved = 'en';
   try{ var s = localStorage.getItem('share2_lang'); if(s) saved = s; }catch(e){}
+  try{ var q = new URLSearchParams(window.location.search).get('lang'); if(q === 'en' || q === 'zh' || q === 'ms') saved = q; }catch(e){}
+  function setLangInUrl(lang){
+    try{
+      var u = new URL(window.location.href);
+      u.searchParams.set('lang', lang);
+      history.replaceState(null, '', u.pathname + u.search + u.hash);
+    }catch(e){}
+  }
   document.querySelectorAll('.langsw button, .mm-lang button').forEach(function(b){
     b.classList.toggle('active', b.getAttribute('data-lang') === saved);
     b.addEventListener('click', function(){
       var lang = b.getAttribute('data-lang');
       try{ localStorage.setItem('share2_lang', lang); }catch(e){}
+      setLangInUrl(lang);
       document.querySelectorAll('.langsw button, .mm-lang button').forEach(function(x){
         x.classList.toggle('active', x.getAttribute('data-lang') === lang);
       });
