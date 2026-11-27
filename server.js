@@ -65,7 +65,7 @@ const PRODUCTS = {
   plan_max_yearly:     { name: "Max Plan (1 year access, one-time)",          price_sen: 88000  }, // RM880
   plan_team_monthly:   { name: "Team Plan (1 month access, one-time)",        price_sen: 55000  }, // RM550
   plan_team_yearly:    { name: "Team Plan (1 year access, one-time)",         price_sen: 288000 }, // RM2880
-  setup_only:          { name: "Digital Profile Setup (one-time)",            price_sen: 4800   }, // RM48
+  setup_only:          { name: "Digital Profile Setup (one-time)",            price_sen: 8000   }, // RM80
   card_template_only:  { name: "Ready-made Card (one-time)",                  price_sen: 11800  }, // RM118
   card_custom_only:    { name: "Custom Card (one-time)",                      price_sen: 33800  }  // RM338
 };
