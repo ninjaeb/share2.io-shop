@@ -12,7 +12,7 @@ set net:max-retries 2
 set net:timeout 30
 open --user \"$FTP_USERNAME\" --env-password \"ftp://$FTP_SERVER\"
 mirror --reverse --verbose public public
-put server.js admin.js db.js package.json
+put server.js admin.js db.js deploy-hook.js package.json
 mkdir -p -f tmp
 put -O tmp restart.txt
 "

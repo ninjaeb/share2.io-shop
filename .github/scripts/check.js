@@ -3,7 +3,7 @@ const fs = require("fs");
 const assert = require("assert");
 const { execFileSync, spawn } = require("child_process");
 
-for (const f of ["server.js", "admin.js", "db.js"]) execFileSync(process.execPath, ["--check", f]);
+for (const f of ["server.js", "admin.js", "db.js", "deploy-hook.js"]) execFileSync(process.execPath, ["--check", f]);
 
 const html = fs.readFileSync("public/index.html", "utf8");
 for (const m of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) new Function(m[1]);
@@ -24,7 +24,7 @@ for (const [type, id] of [["template", "card_template_only"], ["custom", "card_c
 
 const PORT = "3999";
 const app = spawn(process.execPath, ["server.js"], {
-  env: { ...process.env, PORT, RZP_KEY_ID: "ci_dummy", RZP_KEY_SECRET: "ci_dummy" }, stdio: "inherit"
+  env: { ...process.env, PORT, RZP_KEY_ID: "ci_dummy", RZP_KEY_SECRET: "ci_dummy", DEPLOY_WEBHOOK_SECRET: "ci_hook_secret" }, stdio: "inherit"
 });
 (async () => {
   const base = `http://127.0.0.1:${PORT}/shop`;
@@ -38,5 +38,16 @@ const app = spawn(process.execPath, ["server.js"], {
     body: JSON.stringify({ items: [{ id: "card_template_only", qty: 1 }] })
   });
   assert.strictEqual(noPlan.status, 400, "an order without a plan must be rejected");
+
+  // GitHub deploy webhook: unsigned / wrongly signed requests are rejected; a correctly
+  // signed ping, and a signed push to another branch, are accepted without touching git.
+  const hook = base + "/github-deploy";
+  const sign = (body, secret) => "sha256=" + require("crypto").createHmac("sha256", secret).update(body).digest("hex");
+  const post = (body, headers) => fetch(hook, { method: "POST", headers: { "Content-Type": "application/json", ...headers }, body });
+  const ping = "{}", other = JSON.stringify({ ref: "refs/heads/not-main" });
+  assert.strictEqual((await post(ping, { "X-GitHub-Event": "ping" })).status, 401, "unsigned webhook must be rejected");
+  assert.strictEqual((await post(ping, { "X-GitHub-Event": "ping", "X-Hub-Signature-256": sign(ping, "wrong") })).status, 401, "badly signed webhook must be rejected");
+  assert.strictEqual((await post(ping, { "X-GitHub-Event": "ping", "X-Hub-Signature-256": sign(ping, "ci_hook_secret") })).status, 200, "signed ping must be accepted");
+  assert.strictEqual((await post(other, { "X-GitHub-Event": "push", "X-Hub-Signature-256": sign(other, "ci_hook_secret") })).status, 202, "push to another branch must be ignored");
   console.log("All checks passed.");
 })().then(() => { app.kill(); }, err => { console.error(err); app.kill(); process.exit(1); });

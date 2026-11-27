@@ -26,6 +26,7 @@ const path = require("path");
 const Razorpay = require("razorpay");
 const db = require("./db");
 const adminRouter = require("./admin");
+const deployHook = require("./deploy-hook");
 
 const KEY_ID = process.env.RZP_KEY_ID;
 const KEY_SECRET = process.env.RZP_KEY_SECRET;
@@ -106,6 +107,10 @@ app.post("/webhooks/curlec", express.raw({ type: "*/*", limit: "256kb" }), (req,
   req._rawWebhookBody = req.body; // Buffer
   next("route"); // fall through to the real handler registered later
 });
+
+// GitHub deploy webhook — also needs the raw body (for its signature check), so it
+// is mounted before the JSON parser too. Inert unless DEPLOY_WEBHOOK_SECRET is set.
+app.use("/github-deploy", deployHook);
 
 app.use(express.json({ limit: "64kb" }));
 app.use(express.urlencoded({ extended: false })); // Razorpay posts the callback as form data
